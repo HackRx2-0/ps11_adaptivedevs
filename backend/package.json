@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "prisma generate && nodemon",
+    "build": "tsc .",
+    "prisma:watch": "nodemon --config nodemon-prisma-watch.json"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.26.0",
+    "apollo-server-express": "2.25.2",
+    "cookie-session": "^1.4.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "ioredis": "^4.27.6",
+    "lodash": "^4.17.21",
+    "nexus": "^1.1.0",
+    "redis-modules-sdk": "^0.8.1",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/cookie-session": "^2.0.43",
+    "@types/lodash": "^4.14.171",
+    "nodemon": "^2.0.12",
+    "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.10.1"
+  }
+}
