@@ -136,7 +136,7 @@ const DoctorsList: React.FunctionComponent = () => {
   return (
     <div
       className={
-        'pb-20 md:pb-5 overflow-hidden flex flex-col justify-items-center'
+        'pb-20 md:pb-5 pt-14 overflow-hidden flex flex-col justify-items-center'
       }
     >
       <DoctorCard
