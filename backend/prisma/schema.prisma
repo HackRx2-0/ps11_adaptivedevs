@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id             Int       @id @default(autoincrement())
+  uuid           String    @unique @default(uuid())
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  email          String?   @unique
+  phone_number   String    @unique
+  name           String?
+  verified       Boolean?  @default(false)
+  gender         Gender?
+  role           Role      @default(patient)
+  password       String
+  sessions       Session[]
+  doctor_details Doctor?   @relation(fields: [doctorId], references: [id])
+  doctorId       Int?
+
+
+  @@index([uuid])
+}
+
+model Patient {
+  id Int @id @default(autoincrement())
+
+}
+
+model Doctor {
+  id                       Int                     @id @default(autoincrement())
+  updated_at               DateTime                @updatedAt
+  display_name             String
+  mrn                      String?
+  doctor_introduction      String
+  services                 DoctorServices[]
+  photo                    String?
+  url_slug                 String?
+  qualifications           DoctorQualifications[]
+  languages_spoken         DoctorLanguagesSpoken[]
+  last_online              DateTime?
+  is_online                Boolean
+  ready_to_accept_patients Boolean
+  user                     User[]
+
+  @@index([is_online])
+}
+
+enum Gender {
+  male
+  female
+  other
+}
+
+model DoctorLanguagesSpoken {
+  id       Int      @id @default(autoincrement())
+  language String
+  Doctor   Doctor[]
+}
+
+model DoctorServices {
+  id     Int      @id @default(autoincrement())
+  name   String
+  Doctor Doctor[]
+}
+
+model DoctorQualifications {
+  id     Int      @id @default(autoincrement())
+  degree String
+  Doctor Doctor[]
+}
+
+enum Role {
+  patient
+  doctor
+  admin
+  superAdmin
+}
+
+model Session {
+  id          Int         @id @default(autoincrement())
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
+  token       String      @unique
+  expires     DateTime
+  invalidated Boolean
+  type        SessionType
+
+  User   User? @relation(fields: [userId], references: [id])
+  userId Int?
+  @@index([token])
+}
+
+enum SessionType {
+  authenticatedSession
+  anonymousSession
+}
