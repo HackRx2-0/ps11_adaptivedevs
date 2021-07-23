@@ -28,16 +28,19 @@ const VideoConf: React.FunctionComponent = () => {
   };
 
   return (
-    <div className={'bg-primary-light h-screen m-0 p-0 overflow-hidden'}>
-      <div
-        className={
-          'bg-gray-400  rounded-b-3xl h-20' + ' ' + styles?.video_panel
-        }
-      >
-        Video Panel
+    <div className={'h-screen  m-0 p-0 overflow-hidden'}>
+      <div className={'bg-gray-400  rounded-b-3xl' + ' ' + styles?.video_panel}>
+        <div>
+          {/* <video src="/videos/girl.mp4" loop autoPlay></video> */}
+          <video
+            src="https://firebasestorage.googleapis.com/v0/b/tasnim-dev.appspot.com/o/girl.mp4?alt=media&token=28ced321-64fc-450d-bbd2-c64bcae3485b"
+            loop
+            autoPlay
+          ></video>
+        </div>
         <div
           className={
-            'absolute bottom-28 left-1/2 transform -translate-x-1/2 text-center'
+            'fixed bottom-28 left-1/2 transform -translate-x-1/2 text-center'
           }
         >
           <div className={'text-white text-xl font-medium'}>
@@ -50,7 +53,8 @@ const VideoConf: React.FunctionComponent = () => {
       {/* control buttons */}
       <div
         className={
-          'h-24 flex flex-row justify-evenly items-center' +
+          'h-24 fixed bottom-0 w-full flex flex-row justify-evenly \
+          items-center bg-primary-light rounded-t-3xl' +
           ' ' +
           styles?.bottom_actions
         }

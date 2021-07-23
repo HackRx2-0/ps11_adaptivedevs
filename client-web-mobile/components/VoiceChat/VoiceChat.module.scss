@@ -1,20 +1,13 @@
-.video_panel {
-  height: 100%;
-  margin: 0;
+.container {
+  background: rgb(91, 90, 110);
+  background: linear-gradient(
+    300deg,
+    rgba(91, 90, 110, 1) 0%,
+    rgba(217, 217, 217, 1) 100%
+  );
 }
 
 .bottom_actions {
-  //   position: fixed;
-  //   width: 100%;
-
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    300deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-
   div {
     color: rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0.2);
