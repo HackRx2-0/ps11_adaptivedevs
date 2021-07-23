@@ -28,7 +28,7 @@ const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
 
 const HomeBody: React.FunctionComponent = () => {
   return (
-    <div className={'bg-base-200-light'}>
+    <div className={'bg-base-200-light pb-16'}>
       <div
         className={
           'text-3xl text-secondary-content-light my-3 ml-2 font-light mt-2'
@@ -39,6 +39,16 @@ const HomeBody: React.FunctionComponent = () => {
 
       {/* specialist cards */}
       <div className={'flex flex-row flex-wrap justify-evenly px-4'}>
+        <DoctorCard
+          specialization="Neurologist"
+          img_alt="spec_img"
+          img_src="/images/doctor.png"
+        />
+        <DoctorCard
+          specialization="Neurologist"
+          img_alt="spec_img"
+          img_src="/images/doctor.png"
+        />
         <DoctorCard
           specialization="Neurologist"
           img_alt="spec_img"

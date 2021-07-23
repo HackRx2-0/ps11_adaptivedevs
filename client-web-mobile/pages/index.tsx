@@ -1,4 +1,5 @@
 import HomeBody from 'components/HomeBody/HomeBody';
+import InstaChatBtn from 'components/InstaChatBtn/InstaChatBtn';
 import BottomNav from 'components/Navigation/BottomNav/BottomNav';
 import TopHeader from 'components/TopHeader/TopHeader';
 import Head from 'next/head';
@@ -19,6 +20,7 @@ export default function Home() {
         <TopHeader />
         <HomeBody />
         <BottomNav />
+        <InstaChatBtn />
       </main>
     </div>
   );
