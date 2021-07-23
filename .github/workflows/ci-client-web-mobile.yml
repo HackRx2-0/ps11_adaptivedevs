@@ -1,0 +1,24 @@
+name: CI for Client Web Mobile
+
+on:
+  push:
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client-web-mobile
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+      - name: Check npm version
+        run: npm -v
+      - name: Install Dependencies 💻
+        run: npm install
+      - name: Build 🔨
+        run: npm run build
