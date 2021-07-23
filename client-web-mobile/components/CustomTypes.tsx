@@ -4,4 +4,8 @@ interface DoctorCardInterface {
   img_alt: string;
 }
 
-export type { DoctorCardInterface };
+interface TopNavInterface {
+  doctor?: string;
+}
+
+export type { DoctorCardInterface, TopNavInterface };
