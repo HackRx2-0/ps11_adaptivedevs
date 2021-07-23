@@ -1,0 +1,5 @@
+{
+  "watch": ["prisma"],
+  "ext": "prisma",
+  "exec": "prisma generate"
+}
