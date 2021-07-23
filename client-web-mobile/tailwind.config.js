@@ -10,5 +10,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
 };
