@@ -52,7 +52,7 @@ const TopHeader: React.FunctionComponent = () => {
             className={
               'text-secondary-content-light bg-base-200-light  \
               text-center self-center place-self-center px-4 py-2 mx-2 \
-              text-2xl rounded-md w-full cursor-pointer'
+              text-2xl rounded-md w-full cursor-pointer hover:bg-neutral-light hover:text-neutral-content-light'
             }
             onClick={() => router.push('/doctors_list')}
           >
