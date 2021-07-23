@@ -16,6 +16,7 @@ const TopNav: React.FunctionComponent<TopNavInterface> = (
           'bg-base-100-light text-secondary-content-light hover:bg-secondary-light \
           hover:text-primary-content-light p-2 rounded-lg cursor-pointer'
         }
+        onClick={() => router.back()}
       >
         <HiArrowLeft className={'h-auto w-8'} />
       </div>

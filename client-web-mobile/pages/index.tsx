@@ -1,4 +1,5 @@
 import HomeBody from 'components/HomeBody/HomeBody';
+import BottomNav from 'components/Navigation/BottomNav/BottomNav';
 import TopHeader from 'components/TopHeader/TopHeader';
 import Head from 'next/head';
 import styles from '../styles/Home.module.scss';
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <TopHeader />
         <HomeBody />
+        <BottomNav />
       </main>
     </div>
   );
