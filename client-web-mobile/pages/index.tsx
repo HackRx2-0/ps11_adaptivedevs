@@ -16,7 +16,7 @@ export default function Home() {
         />
       </Head>
 
-      <main>
+      <main className={styles?.container}>
         <TopHeader />
         <HomeBody />
         <BottomNav />

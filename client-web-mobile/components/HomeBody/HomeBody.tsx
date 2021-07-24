@@ -29,7 +29,7 @@ const SpecializationCard: React.FunctionComponent<SpecializationCardInterface> =
 
 const HomeBody: React.FunctionComponent = () => {
   return (
-    <div className={'bg-base-200-light pb-16'}>
+    <div className={'pb-16' + ' ' + styles?.container}>
       <div
         className={
           'text-3xl text-secondary-content-light my-3 ml-2 font-light mt-2'

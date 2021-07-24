@@ -1,0 +1,25 @@
+.container {
+  background: rgb(91, 90, 110);
+  background: linear-gradient(
+    300deg,
+    rgba(91, 90, 110, 1) 0%,
+    rgba(217, 217, 217, 1) 100%
+  );
+}
+
+.bottom_actions {
+  div {
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 13px;
+    border-radius: 12px;
+    &:last-child {
+      background-color: red;
+    }
+  }
+
+  .action_icon {
+    height: auto;
+    width: 26px;
+  }
+}

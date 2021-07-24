@@ -1,3 +1,9 @@
 .specialization_card {
   box-shadow: 5px 4px 24px -12px rgba(0, 0, 0, 0.75);
+  background: rgb(236, 235, 255);
+  background: linear-gradient(
+    300deg,
+    rgba(236, 235, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }

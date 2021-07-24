@@ -5,6 +5,7 @@ import {
   HiOutlineUserCircle,
 } from 'react-icons/hi';
 import { RiSyringeLine } from 'react-icons/ri';
+import styles from './BottomNav.module.scss';
 
 const BottomNav: React.FunctionComponent = () => {
   const router = useRouter();
@@ -13,7 +14,9 @@ const BottomNav: React.FunctionComponent = () => {
     <div
       className={
         'bg-primary-light fixed bottom-0 w-full flex flex-row \
-        justify-around justify-items-center py-3 text-primary-content-light text-3xl'
+        justify-around justify-items-center py-3 text-primary-content-light text-3xl' +
+        ' ' +
+        styles?.container
       }
     >
       <HiOutlineHome
