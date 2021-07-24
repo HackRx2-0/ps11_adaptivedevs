@@ -10,7 +10,7 @@ interface TopNavInterface {
 
 interface DoctorCardInterface {
   doctor: string;
-  specialization: string;
+  specialization?: string;
   hospital: string;
   img_src: string;
   patients: string;

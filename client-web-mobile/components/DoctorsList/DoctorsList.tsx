@@ -10,6 +10,7 @@ import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs';
 import styles from './DoctorsList.module.scss';
 import { useRouter } from 'next/router';
 import { DoctorCardInterface } from 'components/CustomTypes';
+import { useGetOnlineDoctorsQuery } from 'graphql/generated/graphql';
 
 interface StatusInterface {
   status?: string;
@@ -166,6 +167,8 @@ const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
 };
 
 const DoctorsList: React.FunctionComponent = () => {
+  const { data, loading } = useGetOnlineDoctorsQuery();
+
   return (
     <div
       className={
@@ -174,46 +177,20 @@ const DoctorsList: React.FunctionComponent = () => {
         styles.container
       }
     >
-      <DoctorCard
-        doctor="Dr. Jhonny Wilson"
-        specialization="Heart Surgeon"
-        hospital="Apollo Hospitals, Guwahati"
-        img_src="/images/doctor.png"
-        patients="500"
-        experience="4 Years"
-        rating="4.8"
-        status="online"
-      />
-      <DoctorCard
-        doctor="Dr. Jhonny Wilson"
-        specialization="Heart Surgeon"
-        hospital="Apollo Hospitals, Guwahati"
-        img_src="/images/doctor.png"
-        patients="500"
-        experience="4 Years"
-        rating="4.8"
-        status="online"
-      />
-      <DoctorCard
-        doctor="Dr. Jhonny Wilson"
-        specialization="Heart Surgeon"
-        hospital="Apollo Hospitals, Guwahati"
-        img_src="/images/doctor.png"
-        patients="500"
-        experience="4 Years"
-        rating="4.8"
-        status="busy"
-      />
-      <DoctorCard
-        doctor="Dr. Jhonny Wilson"
-        specialization="Heart Surgeon"
-        hospital="Apollo Hospitals, Guwahati"
-        img_src="/images/doctor.png"
-        patients="500"
-        experience="4 Years"
-        rating="4.8"
-        status="offline"
-      />
+      {data?.doctors?.map((doctor, index) => (
+        <DoctorCard
+          key={index}
+          doctor={doctor?.display_name as string}
+          //@ts-ignore
+          specialization={doctor?.specialities[0]?.name}
+          hospital="Apollo Hospitals, Guwahati"
+          img_src="/images/doctor.png"
+          patients="500"
+          experience="4 Years"
+          rating="4.8"
+          status={doctor?.is_online ? 'online' : 'offline'}
+        />
+      ))}
     </div>
   );
 };
