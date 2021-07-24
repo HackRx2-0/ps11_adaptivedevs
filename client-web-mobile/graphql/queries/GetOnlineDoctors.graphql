@@ -1,0 +1,14 @@
+
+
+query GetOnlineDoctors {
+  doctors(is_online: true) {
+    display_name
+    doctor_introduction
+    specialities {
+      name
+    }
+    ready_to_accept_patients
+    is_online
+    
+  }
+}
