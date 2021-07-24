@@ -11,6 +11,7 @@ import styles from './DoctorsList.module.scss';
 import { useRouter } from 'next/router';
 import { DoctorCardInterface } from 'components/CustomTypes';
 import { useGetOnlineDoctorsQuery } from 'graphql/generated/graphql';
+import PaymentDialog from 'components/PaymentDialog/PaymentDialog';
 
 interface StatusInterface {
   status?: string;
@@ -46,6 +47,16 @@ const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
   const router = useRouter();
 
   const [accordion, setAccordion] = useState('hidden');
+
+  const [modalDisplay, setModalDisplay] = useState('none');
+
+  const handleClickOpen = () => {
+    setModalDisplay('block');
+  };
+
+  const handleClickClose = () => {
+    setModalDisplay('none');
+  };
 
   const handleAccordion = () => {
     if (accordion == 'hidden') {
@@ -129,10 +140,30 @@ const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
           className={styles?.action_icon}
           onClick={() => router.push('/voice_chat')}
         />
-        <HiOutlineChatAlt2
-          className={styles?.action_icon}
-          onClick={() => router.push('/chat_page')}
-        />
+
+        <div>
+          {/* trigger */}
+          <button onClick={() => handleClickOpen()}>
+            <HiOutlineChatAlt2
+              className={styles?.action_icon}
+              // onClick={() => router.push('/chat_page')}
+            />
+          </button>
+
+          {/* the model */}
+          <div className={styles?.modal} style={{ display: `${modalDisplay}` }}>
+            <div className={styles?.modal_content}>
+              <span
+                className={styles?.close}
+                onClick={() => handleClickClose()}
+              >
+                x
+              </span>
+              <PaymentDialog />
+            </div>
+          </div>
+        </div>
+
         <HiOutlineVideoCamera
           className={styles?.action_icon}
           onClick={() => router.push('/video_chat')}
