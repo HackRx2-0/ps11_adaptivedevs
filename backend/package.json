@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "prisma generate && nodemon",
+    "dev": "npx prisma generate && nodemon",
     "build": "tsc .",
     "prisma:watch": "nodemon --config nodemon-prisma-watch.json"
   },

@@ -168,7 +168,9 @@ const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
 
 const DoctorsList: React.FunctionComponent = () => {
   const { data, loading } = useGetOnlineDoctorsQuery();
-
+  {
+    if (loading) return <div> loading ... </div>;
+  }
   return (
     <div
       className={
