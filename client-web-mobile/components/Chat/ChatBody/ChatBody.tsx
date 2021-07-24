@@ -53,7 +53,7 @@ const MsgToDoctor: React.FunctionComponent<CustomChatInterface> = (
       <div className={'flex flex-row py-1 items-center'}>
         <div className={'leading-tight pr-3 text-md'}>
           <span>{props?.doctor}</span>
-          <div className={'text-sm text-gray-600'}>{`2s`} ago</div>
+          <div className={'text-sm text-gray-200'}>{`2s`} ago</div>
         </div>
       </div>
       <div
@@ -90,7 +90,7 @@ const ChatBody: React.FunctionComponent<CustomChatInterface> = (
   };
 
   return (
-    <div className={'pb-28 bg-blue-300 pt-20'}>
+    <div className={'pb-28 bg-blue-300 pt-20' + ' ' + styles?.container}>
       <ChatStartMsg />
       <MsgFromDoctor doctor={props?.doctor} msg="Hello, how can I help you?" />
       <MsgToDoctor msg="Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem odit, repellendus dicta dolor rem delectus cum sunt! Itaque, aliquid, laudantium atque veritatis non" />
