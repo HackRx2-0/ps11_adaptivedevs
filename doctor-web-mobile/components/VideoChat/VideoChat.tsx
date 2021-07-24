@@ -74,7 +74,7 @@ const VideoConf: React.FunctionComponent = () => {
             <FiCamera className={' ' + styles.action_icon} />
           )}
         </div>
-        <div>
+        <div onClick={() => router.push('/')}>
           <HiOutlinePhoneMissedCall className={' ' + styles.action_icon} />
         </div>
       </div>

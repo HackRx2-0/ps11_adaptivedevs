@@ -13,6 +13,7 @@ interface PatientCardInterface {
   img_src: string;
   contact?: string;
   symptoms?: string;
+  chat_type?: number;
 }
 
 const PatientCard: React.FunctionComponent<PatientCardInterface> = (
@@ -59,18 +60,26 @@ const PatientCard: React.FunctionComponent<PatientCardInterface> = (
 
       {/* action panel (buttons) */}
       <div className={'flex flex-row justify-evenly mt-5'}>
-        <HiOutlinePhone
-          className={styles?.action_icon}
-          onClick={() => router.push('/voice_chat')}
-        />
-        <HiOutlineChatAlt2
-          className={styles?.action_icon}
-          onClick={() => router.push('/chat')}
-        />
-        <HiOutlineVideoCamera
-          className={styles?.action_icon}
-          onClick={() => router.push('/video_chat')}
-        />
+        {props.chat_type == 0 ? (
+          <HiOutlinePhone
+            className={styles?.action_icon}
+            onClick={() => router.push('/voice_chat')}
+          />
+        ) : null}
+
+        {props.chat_type == 1 ? (
+          <HiOutlineChatAlt2
+            className={styles?.action_icon}
+            onClick={() => router.push('/chat')}
+          />
+        ) : null}
+
+        {props.chat_type == 2 ? (
+          <HiOutlineVideoCamera
+            className={styles?.action_icon}
+            onClick={() => router.push('/video_popup')}
+          />
+        ) : null}
       </div>
     </div>
   );
@@ -97,6 +106,7 @@ const HomePage: React.FunctionComponent = () => {
             img_src="/assets/user.png"
             contact="rohit@xyz.com"
             symptoms="headache, body pain, weakness"
+            chat_type={2 as number}
           />
         </div>
 
@@ -116,12 +126,14 @@ const HomePage: React.FunctionComponent = () => {
             img_src="/assets/user.png"
             contact="partha@xyz.com"
             symptoms="headache, body pain, weakness"
+            chat_type={0 as number}
           />
           <PatientCard
             name="SriRam Srirangam"
             img_src="/assets/user.png"
             contact="sriram@xyz.com"
             symptoms="headache, body pain, weakness"
+            chat_type={1 as number}
           />
         </div>
       </div>
