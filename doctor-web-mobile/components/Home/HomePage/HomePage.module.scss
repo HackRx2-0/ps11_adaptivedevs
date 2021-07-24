@@ -1,0 +1,26 @@
+.patient_card {
+  box-shadow: 5px 4px 24px -12px rgba(0, 0, 0, 0.75);
+}
+
+.action_icon {
+  background-color: rgb(233, 243, 255);
+  height: auto;
+  width: 42px;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &:nth-child(1) {
+    color: rgb(42, 192, 134);
+  }
+  &:nth-child(2) {
+    color: rgb(192, 102, 42);
+  }
+  &:nth-child(3) {
+    color: rgb(70, 42, 192);
+  }
+}
