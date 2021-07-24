@@ -38,17 +38,17 @@ model Patient {
 model Doctor {
   id                       Int                     @id @default(autoincrement())
   updated_at               DateTime                @updatedAt
-  display_name             String
+  display_name             String?
   mrn                      String?
-  doctor_introduction      String
-  services                 DoctorServices[]
+  doctor_introduction      String?
+  specialities             DoctorSpecialities[]
   photo                    String?
   url_slug                 String?
   qualifications           DoctorQualifications[]
   languages_spoken         DoctorLanguagesSpoken[]
   last_online              DateTime?
-  is_online                Boolean
-  ready_to_accept_patients Boolean
+  is_online                Boolean?                @default(false)
+  ready_to_accept_patients Boolean?
   user                     User[]
 
   @@index([is_online])
@@ -66,7 +66,7 @@ model DoctorLanguagesSpoken {
   Doctor   Doctor[]
 }
 
-model DoctorServices {
+model DoctorSpecialities {
   id     Int      @id @default(autoincrement())
   name   String
   Doctor Doctor[]

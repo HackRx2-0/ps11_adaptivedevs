@@ -17,6 +17,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  Gender: PrismaClient.Gender
 }
 
 export interface NexusGenScalars {
@@ -28,6 +29,11 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Doctor: PrismaClient.Doctor;
+  DoctorLanguagesSpoken: PrismaClient.DoctorLanguagesSpoken;
+  DoctorQualifications: PrismaClient.DoctorQualifications;
+  DoctorSpecialities: PrismaClient.DoctorSpecialities;
+  Mutation: {};
   Query: {};
   User: PrismaClient.User;
 }
@@ -40,31 +46,107 @@ export interface NexusGenUnions {
 
 export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
-  Query: { // field return type
-    users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
+  Doctor: { // field return type
+    display_name: string | null; // String
+    doctor_introduction: string | null; // String
+    is_online: boolean | null; // Boolean
+    languages_spoken: Array<NexusGenRootTypes['DoctorLanguagesSpoken'] | null> | null; // [DoctorLanguagesSpoken]
+    last_online: string | null; // String
+    mrn: string | null; // String
+    photo: string | null; // String
+    qualifications: Array<NexusGenRootTypes['DoctorQualifications'] | null> | null; // [DoctorQualifications]
+    ready_to_accept_patients: boolean | null; // Boolean
+    specialities: Array<NexusGenRootTypes['DoctorSpecialities'] | null> | null; // [DoctorSpecialities]
+    user: NexusGenRootTypes['User'] | null; // User
+    uuid: string | null; // ID
   }
-  User: { // field return type
+  DoctorLanguagesSpoken: { // field return type
+    id: string | null; // ID
+    language: string | null; // String
+  }
+  DoctorQualifications: { // field return type
+    degree: string | null; // String
+    id: string | null; // ID
+  }
+  DoctorSpecialities: { // field return type
     id: string | null; // ID
     name: string | null; // String
+  }
+  Mutation: { // field return type
+    signup: NexusGenRootTypes['User'] | null; // User
+  }
+  Query: { // field return type
+    doctors: Array<NexusGenRootTypes['Doctor'] | null> | null; // [Doctor]
+  }
+  User: { // field return type
+    doctor: NexusGenRootTypes['Doctor'] | null; // Doctor
+    email: string | null; // String
+    name: string | null; // String
+    phone_number: string | null; // String
     uuid: string | null; // ID
   }
 }
 
 export interface NexusGenFieldTypeNames {
-  Query: { // field return type name
-    users: 'User'
+  Doctor: { // field return type name
+    display_name: 'String'
+    doctor_introduction: 'String'
+    is_online: 'Boolean'
+    languages_spoken: 'DoctorLanguagesSpoken'
+    last_online: 'String'
+    mrn: 'String'
+    photo: 'String'
+    qualifications: 'DoctorQualifications'
+    ready_to_accept_patients: 'Boolean'
+    specialities: 'DoctorSpecialities'
+    user: 'User'
+    uuid: 'ID'
   }
-  User: { // field return type name
+  DoctorLanguagesSpoken: { // field return type name
+    id: 'ID'
+    language: 'String'
+  }
+  DoctorQualifications: { // field return type name
+    degree: 'String'
+    id: 'ID'
+  }
+  DoctorSpecialities: { // field return type name
     id: 'ID'
     name: 'String'
+  }
+  Mutation: { // field return type name
+    signup: 'User'
+  }
+  Query: { // field return type name
+    doctors: 'Doctor'
+  }
+  User: { // field return type name
+    doctor: 'Doctor'
+    email: 'String'
+    name: 'String'
+    phone_number: 'String'
     uuid: 'ID'
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    signup: { // args
+      email?: string | null; // String
+      gender?: NexusGenEnums['Gender'] | null; // Gender
+      name?: string | null; // String
+      phone_number: string; // String!
+    }
+  }
+  Query: {
+    doctors: { // args
+      is_online: boolean; // Boolean!
+      specialities?: string[] | null; // [String!]
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
@@ -77,7 +159,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects;
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = keyof NexusGenEnums;
 
 export type NexusGenInterfaceNames = never;
 

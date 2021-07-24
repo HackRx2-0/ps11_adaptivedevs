@@ -1,6 +1,12 @@
 import { makeSchema, nullable, objectType, queryType, stringArg } from 'nexus';
 import path from 'path';
 import { authenticated, authorized } from 'src/middlewares/auth.middleware';
+import {
+  DocotorObjectType,
+  FindDoctorQueryType,
+  // CreateNewDoctorMutation,
+} from './resolvers/doctor';
+import { CreateUserMutation, UserObject } from './resolvers/user';
 
 const schema = makeSchema({
   sourceTypes: {
@@ -23,26 +29,11 @@ const schema = makeSchema({
     process.env.NEXUS_SHOULD_EXIT_AFTER_REFLECTION
   ),
   types: [
-    objectType({
-      name: 'User',
-      definition(t) {
-        t.id('id');
-        t.string('name');
-        t.id('uuid');
-      },
-    }),
-    queryType({
-      definition(t) {
-        t.list.field('users', {
-          type: 'User',
-          resolve: authenticated(
-            authorized((root, args, ctx, info) => {
-              return ctx.prisma.user.findMany();
-            }, 'admin')
-          ),
-        });
-      },
-    }),
+    UserObject,
+    CreateUserMutation,
+    DocotorObjectType,
+    FindDoctorQueryType,
+    // CreateNewDoctorMutation,
   ],
 });
 
