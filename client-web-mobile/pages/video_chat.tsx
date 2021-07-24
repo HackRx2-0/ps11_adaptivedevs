@@ -1,4 +1,5 @@
 import TopNav from 'components/Navigation/TopNav/TopNav';
+import VideoChat from 'components/VideoChat/VideoChat';
 
 const VideoChatPage = () => {
   const doctorName = 'Dr. Manish Kumar';
@@ -6,7 +7,7 @@ const VideoChatPage = () => {
   return (
     <div>
       <TopNav doctor={doctorName} />
-      Video Chat
+      <VideoChat />
     </div>
   );
 };

@@ -1,0 +1,32 @@
+.video_panel {
+  height: 100%;
+  margin: 0;
+}
+
+.bottom_actions {
+  //   position: fixed;
+  //   width: 100%;
+
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    300deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
+  div {
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 13px;
+    border-radius: 12px;
+    &:last-child {
+      background-color: red;
+    }
+  }
+
+  .action_icon {
+    height: auto;
+    width: 26px;
+  }
+}

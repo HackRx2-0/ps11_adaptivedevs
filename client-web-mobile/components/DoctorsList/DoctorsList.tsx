@@ -11,6 +11,34 @@ import styles from './DoctorsList.module.scss';
 import { useRouter } from 'next/router';
 import { DoctorCardInterface } from 'components/CustomTypes';
 
+interface StatusInterface {
+  status?: string;
+}
+
+const DoctorStatus: React.FunctionComponent<StatusInterface> = (
+  props: StatusInterface
+) => {
+  let status = props.status;
+  let color: string = 'warning';
+
+  if (status == 'online') {
+    color = 'success';
+  } else if (status == 'busy') {
+    color = 'warning';
+  } else if (status == 'offline') {
+    color = 'error';
+  }
+
+  return (
+    <div className={'flex flex-row items-center mt-1.5'}>
+      <div className={`bg-${color}` + ' ' + styles?.status_dot}></div>
+      <div>
+        <span>{props.status}</span>
+      </div>
+    </div>
+  );
+};
+
 const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
   props: DoctorCardInterface
 ) => {
@@ -55,6 +83,9 @@ const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
           <div className={'leading-tight text-gray-600 text-md'}>
             <span>{props.hospital}</span>
           </div>
+          <div>
+            <DoctorStatus status={props.status} />
+          </div>
         </div>
       </div>
 
@@ -93,12 +124,14 @@ const DoctorCard: React.FunctionComponent<DoctorCardInterface> = (
 
       {/* action panel (buttons) */}
       <div className={'flex flex-row justify-evenly mt-5'}>
-        {/* ToDo: Need to add URLs */}
         <HiOutlinePhone
           className={styles?.action_icon}
-          onClick={() => router.push('/')}
+          onClick={() => router.push('/voice_chat')}
         />
-        <HiOutlineChatAlt2 className={styles?.action_icon} />
+        <HiOutlineChatAlt2
+          className={styles?.action_icon}
+          onClick={() => router.push('/chat_page')}
+        />
         <HiOutlineVideoCamera
           className={styles?.action_icon}
           onClick={() => router.push('/video_chat')}
@@ -136,7 +169,9 @@ const DoctorsList: React.FunctionComponent = () => {
   return (
     <div
       className={
-        'pb-20 md:pb-5 overflow-hidden flex flex-col justify-items-center'
+        'pb-20 md:pb-5 pt-14 overflow-hidden flex flex-col justify-items-center' +
+        ' ' +
+        styles.container
       }
     >
       <DoctorCard
@@ -147,6 +182,7 @@ const DoctorsList: React.FunctionComponent = () => {
         patients="500"
         experience="4 Years"
         rating="4.8"
+        status="online"
       />
       <DoctorCard
         doctor="Dr. Jhonny Wilson"
@@ -156,6 +192,7 @@ const DoctorsList: React.FunctionComponent = () => {
         patients="500"
         experience="4 Years"
         rating="4.8"
+        status="online"
       />
       <DoctorCard
         doctor="Dr. Jhonny Wilson"
@@ -165,6 +202,7 @@ const DoctorsList: React.FunctionComponent = () => {
         patients="500"
         experience="4 Years"
         rating="4.8"
+        status="busy"
       />
       <DoctorCard
         doctor="Dr. Jhonny Wilson"
@@ -174,6 +212,7 @@ const DoctorsList: React.FunctionComponent = () => {
         patients="500"
         experience="4 Years"
         rating="4.8"
+        status="offline"
       />
     </div>
   );

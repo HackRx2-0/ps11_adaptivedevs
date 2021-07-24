@@ -16,10 +16,18 @@ interface DoctorCardInterface {
   patients: string;
   experience: string;
   rating: string;
+  status?: string;
+}
+
+interface CustomChatInterface {
+  name?: string;
+  doctor?: string;
+  msg?: string;
 }
 
 export type {
   SpecializationCardInterface,
   TopNavInterface,
   DoctorCardInterface,
+  CustomChatInterface,
 };

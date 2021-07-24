@@ -10,7 +10,9 @@ const TopHeader: React.FunctionComponent = () => {
     <div>
       <div
         className={
-          'bg-primary-light w-full top-0 p-4 text-primary-content-light rounded-b-3xl'
+          'bg-primary-light w-full top-0 p-4 text-primary-content-light rounded-b-3xl' +
+          ' ' +
+          styles?.top_header
         }
       >
         <div className={'logo text-xl'}>Logo</div>
