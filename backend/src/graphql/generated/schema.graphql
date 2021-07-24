@@ -2,12 +2,53 @@
 ### Do not make changes to this file directly
 
 
+type Doctor {
+  display_name: String
+  doctor_introduction: String
+  is_online: Boolean
+  languages_spoken: [DoctorLanguagesSpoken]
+  last_online: String
+  mrn: String
+  photo: String
+  qualifications: [DoctorQualifications]
+  ready_to_accept_patients: Boolean
+  specialities: [DoctorSpecialities]
+  user: User
+  uuid: ID
+}
+
+type DoctorLanguagesSpoken {
+  id: ID
+  language: String
+}
+
+type DoctorQualifications {
+  degree: String
+  id: ID
+}
+
+type DoctorSpecialities {
+  id: ID
+  name: String
+}
+
+enum Gender {
+  female
+  male
+}
+
+type Mutation {
+  signup(email: String, gender: Gender, name: String, phone_number: String!): User
+}
+
 type Query {
-  users: [User]
+  doctors(is_online: Boolean! = true, specialities: [String!]): [Doctor]
 }
 
 type User {
-  id: ID
+  doctor: Doctor
+  email: String
   name: String
+  phone_number: String
   uuid: ID
 }
